@@ -1,0 +1,146 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'ja' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const isJapanese = lang === 'ja';
+
+import Layout from '../../layouts/Layout.astro';
+import JaPrivacy from '../../content/ja/privacy.mdx';
+import EnPrivacy from '../../content/en/privacy.mdx';
+
+const Content = isJapanese ? JaPrivacy : EnPrivacy;
+const title = isJapanese ? 'プライバシーポリシー' : 'Privacy Policy';
+const description = isJapanese ? 'PhraseBrew プライバシーポリシー' : 'PhraseBrew Privacy Policy';
+const lastUpdated = isJapanese ? '2025年8月15日' : 'August 15, 2025';
+
+const tocItems = isJapanese ? [
+  { href: '#第-1-条収集する情報', text: '第1条（収集する情報）' },
+  { href: '#第-2-条情報の利用目的', text: '第2条（情報の利用目的）' },
+  { href: '#第-3-条翻訳データの取扱い', text: '第3条（翻訳データの取扱い）' },
+  { href: '#第-4-条第三者サービス', text: '第4条（第三者サービス）' },
+  { href: '#第-5-条データの保存期間', text: '第5条（データの保存期間）' },
+  { href: '#第-6-条データのセキュリティ', text: '第6条（データのセキュリティ）' },
+  { href: '#第-7-条第三者への情報提供', text: '第7条（第三者への情報提供）' },
+  { href: '#第-8-条ユーザーの権利', text: '第8条（ユーザーの権利）' },
+  { href: '#第-9-条未成年者の利用', text: '第9条（未成年者の利用）' },
+  { href: '#第-10-条プライバシーポリシーの変更', text: '第10条（プライバシーポリシーの変更）' },
+  { href: '#第-11-条お問い合わせ', text: '第11条（お問い合わせ）' },
+  { href: '#第-12-条準拠法管轄裁判所', text: '第12条（準拠法・管轄裁判所）' },
+  { href: '#第-13-条言語', text: '第13条（言語）' },
+] : [
+  { href: '#article-1-information-we-collect', text: 'Article 1 (Information We Collect)' },
+  { href: '#article-2-purpose-of-information-use', text: 'Article 2 (Purpose of Information Use)' },
+  { href: '#article-3-handling-of-translation-data', text: 'Article 3 (Handling of Translation Data)' },
+  { href: '#article-4-third-party-services', text: 'Article 4 (Third-Party Services)' },
+  { href: '#article-5-data-retention-period', text: 'Article 5 (Data Retention Period)' },
+  { href: '#article-6-data-security', text: 'Article 6 (Data Security)' },
+  { href: '#article-7-provision-of-information-to-third-parties', text: 'Article 7 (Provision of Information to Third Parties)' },
+  { href: '#article-8-user-rights', text: 'Article 8 (User Rights)' },
+  { href: '#article-9-use-by-minors', text: 'Article 9 (Use by Minors)' },
+  { href: '#article-10-changes-to-privacy-policy', text: 'Article 10 (Changes to Privacy Policy)' },
+  { href: '#article-11-contact-information', text: 'Article 11 (Contact Information)' },
+  { href: '#article-12-governing-law-and-jurisdiction', text: 'Article 12 (Governing Law and Jurisdiction)' },
+  { href: '#article-13-language', text: 'Article 13 (Language)' },
+];
+
+const tocTitle = isJapanese ? '目次' : 'Table of Contents';
+const lastUpdatedLabel = isJapanese ? '最終更新日' : 'Last updated';
+---
+
+<Layout title={title} description={description} lang={lang}>
+  <article class="policy-content">
+    <h1>{title}</h1>
+    <p class="last-updated">{lastUpdatedLabel}: {lastUpdated}</p>
+    
+    <nav class="toc">
+      <h2>{tocTitle}</h2>
+      <ol>
+        {tocItems.map((item) => (
+          <li><a href={item.href}>{item.text}</a></li>
+        ))}
+      </ol>
+    </nav>
+    
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-content h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-espresso);
+    font-size: var(--text-xl);
+  }
+
+  .last-updated {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .content {
+    margin-top: var(--space-xl);
+  }
+
+  .content :global(h2) {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  .content :global(h3) {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-espresso);
+  }
+
+  .content :global(h4) {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .content :global(ol),
+  .content :global(ul) {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+  }
+
+  .content :global(li) {
+    margin-bottom: var(--space-xs);
+    line-height: 1.8;
+  }
+
+  .content :global(p) {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-xl) 0;
+  }
+
+  @media (max-width: 768px) {
+    .toc {
+      font-size: var(--text-sm);
+    }
+  }
+</style>
