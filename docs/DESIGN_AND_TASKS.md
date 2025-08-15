@@ -21,8 +21,8 @@ phrasebrew/policy/
 │       ├── terms.mdx
 │       └── privacy.mdx
 ├── public/
-│   ├── CNAME                  # カスタムドメイン設定
-│   └── favicon.ico
+│   ├── favicon.svg            # ファビコン
+│   └── global.css             # グローバルスタイル
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Pages自動デプロイ
@@ -217,10 +217,9 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 6: デプロイ（0.5日）
 
-- [ ] GitHub Actions workflow作成
-- [ ] Astroビルド設定（GitHub Pages用）
-- [ ] CNAME設定
-- [ ] デプロイテスト
+- [x] GitHub Actions workflow作成
+- [x] Astroビルド設定（GitHub Pages用）
+- [x] デプロイテスト
 
 ### Phase 7: 最終調整（0.5日）
 
