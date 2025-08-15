@@ -35,7 +35,7 @@ The project follows Astro's standard structure with plans to implement:
 
 1. **Legal Pages**: Terms of Service (`/terms`) and Privacy Policy (`/privacy`)
 2. **Shared Layout**: Common layout component with navigation and footer
-3. **Design System**: Custom CSS variables for theming, including dark mode support
+3. **Design System**: Custom CSS variables for theming
 4. **Content Management**: Markdown files for legal content in `src/content/`
 
 ### Key Design Decisions (from docs/DESIGN_AND_TASKS.md)
@@ -43,13 +43,12 @@ The project follows Astro's standard structure with plans to implement:
 - **Color Palette**: Brand colors including primary (#B8814F), espresso (#4A2E2C), and cream (#F5E6D3)
 - **Typography**: BIZ UDPGothic font for Japanese text optimization
 - **Responsive Design**: Mobile-first approach with breakpoints at 768px
-- **Dark Mode**: Automatic detection using `prefers-color-scheme`
 
 ## Implementation Tasks
 
 The design document outlines 7 phases:
 1. Foundation setup (Astro initialization, directory structure)
-2. Style configuration (CSS variables, responsive design, dark mode)
+2. Style configuration (CSS variables, responsive design)
 3. Layout implementation (shared components, navigation)
 4. Content creation (legal documents in Markdown)
 5. Page implementation (Astro pages for terms and privacy)

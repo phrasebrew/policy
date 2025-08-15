@@ -195,9 +195,8 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 2: スタイル設定（0.5日）
 
-- [ ] global.css作成（CSS変数定義）
-- [ ] レスポンシブデザイン対応
-- [ ] ダークモード対応（prefers-color-scheme）
+- [x] global.css作成（CSS変数定義）
+- [x] レスポンシブデザイン対応
 
 ### Phase 3: レイアウト実装（0.5日）
 

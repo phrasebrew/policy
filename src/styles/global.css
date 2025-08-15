@@ -1,0 +1,347 @@
+/* Google Fonts - BIZ UDPGothic (ユニバーサルデザイン対応) */
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap');
+
+/* CSS変数定義 */
+:root {
+  /* ブランドカラー */
+  --color-primary: #B8814F;
+  --color-espresso: #4A2E2C;
+  --color-cream: #F5E6D3;
+  
+  /* テキストカラー */
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
+  
+  /* 背景 */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f9f9f9;
+  
+  /* ボーダー */
+  --color-border: #e5e5e5;
+  
+  /* タイポグラフィ */
+  --text-xl: 2rem;
+  --text-lg: 1.5rem;
+  --text-md: 1.125rem;
+  --text-base: 1rem;
+  --text-sm: 0.875rem;
+  
+  /* スペーシング */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+}
+
+/* リセット */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ベーススタイル */
+body {
+  font-family: "BIZ UDPGothic", sans-serif;
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-feature-settings: "palt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* リンク */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-size: var(--text-xl);
+  color: var(--color-espresso);
+}
+
+h2 {
+  font-size: var(--text-lg);
+  color: var(--color-espresso);
+  padding-bottom: var(--space-xs);
+  border-bottom: 2px solid var(--color-cream);
+}
+
+h3 {
+  font-size: var(--text-md);
+}
+
+/* 段落 */
+p {
+  margin-bottom: var(--space-md);
+}
+
+/* リスト */
+ul, ol {
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-lg);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+/* ヘッダー */
+header {
+  background: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+header a {
+  color: var(--color-espresso);
+  font-weight: 500;
+}
+
+header .brand {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-right: auto;
+  font-size: var(--text-md);
+}
+
+/* メインコンテンツ */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg);
+  min-height: calc(100vh - 200px);
+}
+
+/* フッター */
+footer {
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-lg);
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+footer p {
+  margin-bottom: var(--space-xs);
+}
+
+/* ポリシーコンテンツ用スタイル */
+.policy-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.policy-content h1 {
+  margin-bottom: var(--space-md);
+}
+
+.policy-content .last-updated {
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-xl);
+}
+
+/* 目次 */
+.toc {
+  background: var(--color-bg-secondary);
+  padding: var(--space-md);
+  border-radius: 8px;
+  margin-bottom: var(--space-xl);
+  border: 1px solid var(--color-border);
+}
+
+.toc h2 {
+  font-size: var(--text-md);
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.toc ol {
+  counter-reset: toc-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  counter-increment: toc-counter;
+  position: relative;
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.toc li::before {
+  content: counter(toc-counter) ".";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.toc a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--color-primary);
+}
+
+/* セクション */
+section {
+  margin-bottom: var(--space-xl);
+}
+
+/* 強調テキスト */
+strong {
+  font-weight: 700;
+  color: var(--color-espresso);
+}
+
+/* コード */
+code {
+  background: var(--color-bg-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.9em;
+  font-family: monospace;
+}
+
+/* 引用 */
+blockquote {
+  border-left: 4px solid var(--color-cream);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+  color: var(--color-text-secondary);
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-md);
+}
+
+th, td {
+  padding: var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  background: var(--color-bg-secondary);
+  font-weight: 700;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+  :root {
+    --text-xl: 1.75rem;
+    --text-lg: 1.25rem;
+    --text-md: 1rem;
+    --text-base: 0.9375rem;
+    --text-sm: 0.8125rem;
+  }
+  
+  header nav {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+  
+  header .brand {
+    margin-right: 0;
+    margin-bottom: var(--space-sm);
+  }
+  
+  main {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .toc {
+    padding: var(--space-sm);
+  }
+  
+  ul, ol {
+    padding-left: var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  header nav {
+    font-size: var(--text-sm);
+  }
+  
+  main {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
+
+/* アクセシビリティ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* スキップリンク */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  text-decoration: none;
+  z-index: 200;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* 印刷用スタイル */
+@media print {
+  header, footer {
+    display: none;
+  }
+  
+  main {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  a {
+    color: var(--color-text);
+    text-decoration: underline;
+  }
+}
