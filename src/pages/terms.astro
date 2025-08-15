@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TermsContent from '../content/terms.mdx';
+---
+
+<Layout title="利用規約" description="PhraseBrew サービス利用規約">
+  <article class="policy-content">
+    <h1>利用規約</h1>
+    <p class="last-updated">最終更新日: 2024年12月27日</p>
+    
+    <nav class="toc">
+      <h2>目次</h2>
+      <ol>
+        <li><a href="#第-1-条定義">第1条（定義）</a></li>
+        <li><a href="#第-2-条利用条件">第2条（利用条件）</a></li>
+        <li><a href="#第-3-条アカウント管理">第3条（アカウント管理）</a></li>
+        <li><a href="#第-4-条課金支払い">第4条（課金・支払い）</a></li>
+        <li><a href="#第-5-条翻訳結果およびデータの取扱い">第5条（翻訳結果およびデータの取扱い）</a></li>
+        <li><a href="#第-6-条禁止事項">第6条（禁止事項）</a></li>
+        <li><a href="#第-7-条知的財産権">第7条（知的財産権）</a></li>
+        <li><a href="#第-8-条免責事項">第8条（免責事項）</a></li>
+        <li><a href="#第-9-条サービスの変更停止終了">第9条（サービスの変更・停止・終了）</a></li>
+        <li><a href="#第-10-条利用規約の変更">第10条（利用規約の変更）</a></li>
+        <li><a href="#第-11-条準拠法管轄裁判所">第11条（準拠法・管轄裁判所）</a></li>
+        <li><a href="#第-12-条お問い合わせ">第12条（お問い合わせ）</a></li>
+      </ol>
+    </nav>
+    
+    <div class="content">
+      <TermsContent />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-content h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-espresso);
+    font-size: var(--text-xl);
+  }
+
+  .last-updated {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .content {
+    margin-top: var(--space-xl);
+  }
+
+  .content :global(h2) {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  .content :global(h3) {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-espresso);
+  }
+
+  .content :global(ol),
+  .content :global(ul) {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+  }
+
+  .content :global(li) {
+    margin-bottom: var(--space-xs);
+    line-height: 1.8;
+  }
+
+  .content :global(p) {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-xl) 0;
+  }
+
+  @media (max-width: 768px) {
+    .toc {
+      font-size: var(--text-sm);
+    }
+  }
+</style>

@@ -1,13 +1,13 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://phrasebrew.github.io',
-  base: '/policy',
+  site: "https://phrasebrew.github.io",
+  base: "/policy",
   build: {
-    assets: 'assets'
+    assets: "assets",
   },
-  integrations: [mdx()]
+  integrations: [mdx()],
 });

@@ -6,7 +6,6 @@ export interface Props {
 
 const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 const currentPath = Astro.url.pathname;
-const baseUrl = import.meta.env.BASE_URL || '/';
 const currentYear = new Date().getFullYear();
 const lastUpdated = new Date().toLocaleDateString('ja-JP', {
   year: 'numeric',
@@ -22,11 +21,11 @@ const lastUpdated = new Date().toLocaleDateString('ja-JP', {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title} - PhraseBrew</title>
   <meta name="description" content={description}>
-  <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`}>
+  <link rel="icon" type="image/svg+xml" href="/policy/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href={`${baseUrl}src/styles/global.css`}>
+  <link rel="stylesheet" href="/policy/global.css">
 </head>
 <body>
   <a href="#main" class="skip-link">メインコンテンツへスキップ</a>
@@ -34,10 +33,10 @@ const lastUpdated = new Date().toLocaleDateString('ja-JP', {
   <header>
     <nav>
       <span class="brand">PhraseBrew</span>
-      <a href={`${baseUrl}terms`} class={currentPath.includes('/terms') ? 'active' : ''}>
+      <a href="/policy/terms" class={currentPath.includes('/terms') ? 'active' : ''}>
         利用規約
       </a>
-      <a href={`${baseUrl}privacy`} class={currentPath.includes('/privacy') ? 'active' : ''}>
+      <a href="/policy/privacy" class={currentPath.includes('/privacy') ? 'active' : ''}>
         プライバシーポリシー
       </a>
     </nav>

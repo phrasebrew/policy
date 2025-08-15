@@ -212,8 +212,8 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 5: ページ実装（0.5日）
 
-- [ ] terms.astro（利用規約）
-- [ ] privacy.astro（プライバシーポリシー）
+- [x] terms.astro（利用規約）
+- [x] privacy.astro（プライバシーポリシー）
 
 ### Phase 6: デプロイ（0.5日）
 
