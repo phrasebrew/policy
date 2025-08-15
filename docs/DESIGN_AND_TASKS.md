@@ -188,10 +188,10 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 1: 基盤構築（0.5日）
 
-- [ ] Astroプロジェクト初期化
-- [ ] 基本ディレクトリ構成作成
-- [ ] Git リポジトリ設定
-- [ ] GitHub Pages設定
+- [x] Astroプロジェクト初期化
+- [x] 基本ディレクトリ構成作成（layouts, styles, content）
+- [x] Git リポジトリ設定
+- [x] GitHub Pages設定
 
 ### Phase 2: スタイル設定（0.5日）
 
@@ -207,8 +207,9 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 4: コンテンツ作成（1日）
 
-- [ ] 利用規約（terms.md）作成
-- [ ] プライバシーポリシー（privacy.md）作成
+- [x] 利用規約（references/terms.md）- 参考資料完成
+- [x] プライバシーポリシー（references/privacy-policy.md）- 参考資料完成
+- [ ] src/content/への移行または直接利用の実装
 
 ### Phase 5: ページ実装（0.5日）
 
@@ -218,7 +219,7 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 ### Phase 6: デプロイ（0.5日）
 
 - [ ] GitHub Actions workflow作成
-- [ ] Astroビルド設定
+- [ ] Astroビルド設定（GitHub Pages用）
 - [ ] CNAME設定
 - [ ] デプロイテスト
 
