@@ -200,9 +200,9 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### Phase 3: レイアウト実装（0.5日）
 
-- [ ] Layout.astro作成
-- [ ] ヘッダー・フッター実装
-- [ ] ナビゲーション実装
+- [x] Layout.astro作成
+- [x] ヘッダー・フッター実装
+- [x] ナビゲーション実装
 
 ### Phase 4: コンテンツ作成（1日）
 
