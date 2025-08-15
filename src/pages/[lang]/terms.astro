@@ -1,0 +1,141 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'ja' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const isJapanese = lang === 'ja';
+
+import Layout from '../../layouts/Layout.astro';
+import JaTerms from '../../content/ja/terms.mdx';
+import EnTerms from '../../content/en/terms.mdx';
+
+const Content = isJapanese ? JaTerms : EnTerms;
+const title = isJapanese ? '利用規約' : 'Terms of Service';
+const description = isJapanese ? 'PhraseBrew サービス利用規約' : 'PhraseBrew Terms of Service';
+const lastUpdated = isJapanese ? '2025年8月15日' : 'August 15, 2025';
+
+const tocItems = isJapanese ? [
+  { href: '#第-1-条定義', text: '第1条（定義）' },
+  { href: '#第-2-条利用条件', text: '第2条（利用条件）' },
+  { href: '#第-3-条アカウント管理', text: '第3条（アカウント管理）' },
+  { href: '#第-4-条課金支払い', text: '第4条（課金・支払い）' },
+  { href: '#第-5-条翻訳結果およびデータの取扱い', text: '第5条（翻訳結果およびデータの取扱い）' },
+  { href: '#第-6-条知的財産権', text: '第6条（知的財産権）' },
+  { href: '#第-7-条サービスの停止または終了', text: '第7条（サービスの停止または終了）' },
+  { href: '#第-8-条利用規約の変更', text: '第8条（利用規約の変更）' },
+  { href: '#第-9-条禁止事項', text: '第9条（禁止事項）' },
+  { href: '#第-10-条免責事項', text: '第10条（免責事項）' },
+  { href: '#第-11-条通知または連絡', text: '第11条（通知または連絡）' },
+  { href: '#第-12-条権利義務の譲渡の禁止', text: '第12条（権利義務の譲渡の禁止）' },
+  { href: '#第-13-条準拠法管轄裁判所', text: '第13条（準拠法・管轄裁判所）' },
+  { href: '#第-14-条言語', text: '第14条（言語）' },
+] : [
+  { href: '#article-1-definitions', text: 'Article 1 (Definitions)' },
+  { href: '#article-2-terms-of-use', text: 'Article 2 (Terms of Use)' },
+  { href: '#article-3-account-management', text: 'Article 3 (Account Management)' },
+  { href: '#article-4-billing-and-payment', text: 'Article 4 (Billing and Payment)' },
+  { href: '#article-5-translation-results-and-data-handling', text: 'Article 5 (Translation Results and Data Handling)' },
+  { href: '#article-6-intellectual-property-rights', text: 'Article 6 (Intellectual Property Rights)' },
+  { href: '#article-7-suspension-or-termination-of-service', text: 'Article 7 (Suspension or Termination of Service)' },
+  { href: '#article-8-changes-to-terms-of-service', text: 'Article 8 (Changes to Terms of Service)' },
+  { href: '#article-9-prohibited-acts', text: 'Article 9 (Prohibited Acts)' },
+  { href: '#article-10-disclaimer', text: 'Article 10 (Disclaimer)' },
+  { href: '#article-11-notice-or-contact', text: 'Article 11 (Notice or Contact)' },
+  { href: '#article-12-severability', text: 'Article 12 (Severability)' },
+  { href: '#article-13-governing-law-and-jurisdiction', text: 'Article 13 (Governing Law and Jurisdiction)' },
+  { href: '#article-14-language', text: 'Article 14 (Language)' },
+];
+
+const tocTitle = isJapanese ? '目次' : 'Table of Contents';
+const lastUpdatedLabel = isJapanese ? '最終更新日' : 'Last updated';
+---
+
+<Layout title={title} description={description} lang={lang}>
+  <article class="policy-content">
+    <h1>{title}</h1>
+    <p class="last-updated">{lastUpdatedLabel}: {lastUpdated}</p>
+    
+    <nav class="toc">
+      <h2>{tocTitle}</h2>
+      <ol>
+        {tocItems.map((item) => (
+          <li><a href={item.href}>{item.text}</a></li>
+        ))}
+      </ol>
+    </nav>
+    
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-content h1 {
+    margin-top: 0;
+    margin-bottom: var(--space-md);
+    color: var(--color-espresso);
+    font-size: var(--text-xl);
+  }
+
+  .last-updated {
+    color: var(--color-text-secondary);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-xl);
+  }
+
+  .content {
+    margin-top: var(--space-xl);
+  }
+
+  .content :global(h2) {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--color-cream);
+    color: var(--color-espresso);
+  }
+
+  .content :global(h3) {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-espresso);
+  }
+
+  .content :global(ol),
+  .content :global(ul) {
+    margin-bottom: var(--space-md);
+    padding-left: var(--space-lg);
+  }
+
+  .content :global(li) {
+    margin-bottom: var(--space-xs);
+    line-height: 1.8;
+  }
+
+  .content :global(p) {
+    margin-bottom: var(--space-md);
+    line-height: 1.8;
+  }
+
+  .content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-xl) 0;
+  }
+
+  @media (max-width: 768px) {
+    .toc {
+      font-size: var(--text-sm);
+    }
+  }
+</style>

@@ -2,15 +2,58 @@
 export interface Props {
   title: string;
   description?: string;
+  lang?: 'ja' | 'en';
 }
 
-const { title, description = "PhraseBrewの法的文書" } = Astro.props;
+const { title, description: propsDescription, lang = 'ja' } = Astro.props;
+const isJapanese = lang === 'ja';
 const currentPath = Astro.url.pathname;
-const lastUpdated = "2025年8月15日";
+
+// UI文字列
+const ui = {
+  ja: {
+    terms: '利用規約',
+    privacy: 'プライバシーポリシー',
+    skipToMain: 'メインコンテンツへスキップ',
+    copyright: '© 2025 Silvis, LLC. All rights reserved.',
+    lastUpdated: '最終更新日',
+    langSwitch: 'English',
+    defaultDescription: 'PhraseBrewの法的文書'
+  },
+  en: {
+    terms: 'Terms of Service',
+    privacy: 'Privacy Policy',
+    skipToMain: 'Skip to main content',
+    copyright: '© 2025 Silvis, LLC. All rights reserved.',
+    lastUpdated: 'Last updated',
+    langSwitch: '日本語',
+    defaultDescription: 'PhraseBrew Legal Documents'
+  },
+};
+
+const t = ui[lang];
+const altLang = lang === 'ja' ? 'en' : 'ja';
+const lastUpdated = isJapanese ? '2025年8月15日' : 'August 15, 2025';
+const description = propsDescription || t.defaultDescription;
+
+// 現在のパスから言語切替後のパスを生成
+let altPath = currentPath;
+if (currentPath.includes('/ja/')) {
+  altPath = currentPath.replace('/ja/', '/en/');
+} else if (currentPath.includes('/en/')) {
+  altPath = currentPath.replace('/en/', '/ja/');
+} else {
+  // 旧URLの場合は新しい言語別URLにリダイレクト
+  if (currentPath.includes('/terms')) {
+    altPath = `/policy/${altLang}/terms`;
+  } else if (currentPath.includes('/privacy')) {
+    altPath = `/policy/${altLang}/privacy`;
+  }
+}
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,16 +66,19 @@ const lastUpdated = "2025年8月15日";
   <link rel="stylesheet" href="/policy/global.css">
 </head>
 <body>
-  <a href="#main" class="skip-link">メインコンテンツへスキップ</a>
+  <a href="#main" class="skip-link">{t.skipToMain}</a>
   
   <header>
     <nav>
       <span class="brand">PhraseBrew</span>
-      <a href="/policy/terms" class={currentPath.includes('/terms') ? 'active' : ''}>
-        利用規約
+      <a href={`/policy/${lang}/terms`} class={currentPath.includes('/terms') ? 'active' : ''}>
+        {t.terms}
       </a>
-      <a href="/policy/privacy" class={currentPath.includes('/privacy') ? 'active' : ''}>
-        プライバシーポリシー
+      <a href={`/policy/${lang}/privacy`} class={currentPath.includes('/privacy') ? 'active' : ''}>
+        {t.privacy}
+      </a>
+      <a href={altPath} class="lang-switch">
+        {t.langSwitch}
       </a>
     </nav>
   </header>
@@ -42,8 +88,8 @@ const lastUpdated = "2025年8月15日";
   </main>
   
   <footer>
-    <p>© 2025 Silvis, LLC. All rights reserved.</p>
-    <p>最終更新日: {lastUpdated}</p>
+    <p>{t.copyright}</p>
+    <p>{t.lastUpdated}: {lastUpdated}</p>
   </footer>
 </body>
 </html>
@@ -61,5 +107,21 @@ const lastUpdated = "2025年8月15日";
     height: 2px;
     background: var(--color-primary);
     margin-top: 2px;
+  }
+  
+  .lang-switch {
+    margin-left: auto;
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-primary);
+    border-radius: 4px;
+    background: white;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .lang-switch:hover {
+    background: var(--color-primary);
+    color: white;
   }
 </style>
