@@ -6,7 +6,6 @@ export interface Props {
 
 const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 const currentPath = Astro.url.pathname;
-const currentYear = new Date().getFullYear();
 const lastUpdated = "2025年8月15日";
 ---
 
@@ -43,7 +42,7 @@ const lastUpdated = "2025年8月15日";
   </main>
   
   <footer>
-    <p>© {currentYear} PhraseBrew. All rights reserved.</p>
+    <p>© 2025 Silvis, LLC. All rights reserved.</p>
     <p>最終更新日: {lastUpdated}</p>
   </footer>
 </body>
