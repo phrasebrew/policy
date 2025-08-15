@@ -17,9 +17,9 @@ phrasebrew/policy/
 │   │   └── Layout.astro       # 共通レイアウト
 │   ├── styles/
 │   │   └── global.css         # グローバルスタイル
-│   └── content/               # ポリシー文書（Markdown）
-│       ├── terms.md
-│       └── privacy.md
+│   └── content/               # ポリシー文書（MDX）
+│       ├── terms.mdx
+│       └── privacy.mdx
 ├── public/
 │   ├── CNAME                  # カスタムドメイン設定
 │   └── favicon.ico
@@ -177,7 +177,7 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 ### コア技術
 - **Astro** - 静的サイトジェネレーター
-- **Markdown** - コンテンツ管理
+- **MDX** - コンテンツ管理（Markdownの拡張版、コンポーネント埋め込み可能）
 - **CSS** - スタイリング（CSS変数でテーマ管理）
 
 ### デプロイ
@@ -208,7 +208,7 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 
 - [x] 利用規約（references/terms.md）- 参考資料完成
 - [x] プライバシーポリシー（references/privacy-policy.md）- 参考資料完成
-- [ ] src/content/への移行または直接利用の実装
+- [x] src/content/へMDX形式でコピー完了
 
 ### Phase 5: ページ実装（0.5日）
 
@@ -238,7 +238,7 @@ const { title, description = "PhraseBrewの法的文書" } = Astro.props;
 ```astro
 ---
 import Layout from '../layouts/Layout.astro';
-import { Content as TermsContent } from '../content/terms.md';
+import TermsContent from '../content/terms.mdx';
 ---
 
 <Layout title="利用規約" description="PhraseBrewサービス利用規約">
